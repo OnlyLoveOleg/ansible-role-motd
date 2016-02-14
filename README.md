@@ -42,8 +42,8 @@ landscape_common_remove: yes
 update_motd_d: group_files/us-east-1a/motd/update-motd.d
 ```
 
-NOTE: in the example above we used group_files/<group>/<role-name> as a way to manage
-      the actual files.
+NOTE: in the example above we used `group_files/<group>/<role-name>` as a way to manage
+      the actual raw files.
 
 
 ##License
