@@ -1,0 +1,8 @@
+---
+# The following is an example for Ubuntu and can be managed from this file or
+# group_vars or host_vars based on your needs.
+
+
+# motd: motd.j2
+# landscape_common_remove: yes
+# update_motd_d: "files/{{ ansible_distribution }}/update-motd.d"

@@ -1,0 +1,25 @@
+---
+- name: Check for supported operating system on target
+  fail:
+    msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
+  when: ( ansible_distribution == "Ubuntu" and ansible_distribution_major_version not in ['14'] )
+
+# An example how to extend the when condition above ^ to include more systems.
+# 
+#  when: ( ansible_distribution == "Ubuntu" and ansible_distribution_major_version not in ['14'] ) or
+#        ( ansible_distribution == "Amazon" and ansible_distribution_major_version not in ['..'] ) or
+#        (....)
+
+- name: Include Ubuntu specific tasks
+  include: Ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+# Extend support as needed
+
+#- name: Include RedHat specific tasks
+#  include: RedHat.yml
+#  when: ansible_os_family == 'RedHat'
+#
+#- name: Include Suse specific tasks
+#  include: Suse.yml
+#  when: ansible_os_family == 'Suse'

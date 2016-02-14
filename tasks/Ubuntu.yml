@@ -1,0 +1,24 @@
+---
+- name: Ubuntu | remove landscape-common package
+  apt:
+   name=landscape-common
+   state=absent
+   purge=yes
+  when: landscape_common_remove is defined
+ 
+
+- name: Ubuntu | copy motd to /etc/motd
+  template:
+   src={{ motd }}
+   dest=/etc/motd
+  when: motd is defined
+
+
+- name: Ubuntu | synchronize update-motd.d to remote
+  synchronize:
+   src={{ update_motd_d }}
+   dest=/etc
+   checksum=yes
+   times=no
+   delete=yes
+  when: update_motd_d is defined
